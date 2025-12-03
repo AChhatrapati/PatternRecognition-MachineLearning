@@ -1,0 +1,8 @@
+import pandas as pd
+data = pd.read_csv('household_power_consumption.txt', sep=';', na_values=['?'])
+data.drop_duplicates(inplace=True)
+# Fill missing values (forward fill)
+data.ffill(inplace=True)
+data.to_csv('cleaned_energy_data.txt', index=False)
+
+print(" Missing data handled and saved as 'cleaned_energy_data.txt'")
